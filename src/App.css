@@ -1,3 +1,7 @@
+:root {
+  --color-blue: #00D1FF;
+}
+
 .App {
   text-align: center;
 }

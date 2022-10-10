@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
-let HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div`
   background-color: #353535;
   display: flex;
   justify-content: space-between;
@@ -30,10 +30,12 @@ export function Header() {
   return (
     <>
       <HeaderWrapper>
-        <FlexText direction="col">
-          <span>Wings</span>
-          <span>Booking</span>
-        </FlexText>
+        <a href="/">
+          <FlexText direction="col">
+            <span>Wings</span>
+            <span>Booking</span>
+          </FlexText>
+        </a>
         {location.pathname === "/first" && (
           <>
             <span>01 숙소 기본사항 입력</span>

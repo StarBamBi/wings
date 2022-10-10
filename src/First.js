@@ -1,13 +1,29 @@
 import styled from "styled-components";
 import { Button } from "./Button";
+import Wrapper from "./components/Wrapper";
+
+const FirstWrapper = styled.div`
+  min-width: 90%;
+`;
 
 const SectionBox = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 250px;
-  min-width: 90%;
+`;
+
+const Section = styled.div`
+  text-align: ${(props) => {
+    switch (props.align) {
+      default:
+        return "center";
+      case "left":
+        return "left";
+      case "right":
+        return "right";
+    }
+  }};
 `;
 
 const TitleSectionBox = styled.div`
@@ -26,6 +42,7 @@ const TitleSectionBox = styled.div`
 
 const TitleContentBox = styled.div`
   padding: 20px 50px;
+  width: 250px;
 `;
 
 const ContentBox = styled.div`
@@ -38,11 +55,6 @@ const GridBox = styled.div`
   padding: 20px 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-`;
-
-const FlexBox = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 function SubTitleInput(props) {
@@ -59,44 +71,51 @@ function SubTitleInput(props) {
 export function First() {
   return (
     <>
-      <button>임시 저장</button>
-      <SectionBox>
-        <TitleSectionBox>
-          고객에게 노출 될 숙소 이름을 설정해주세요
-        </TitleSectionBox>
-        <TitleContentBox>
-          <SubTitleInput subTitle="숙소명" />
-        </TitleContentBox>
-      </SectionBox>
+      <FirstWrapper>
+        <Wrapper>
+          <Section align="right">
+            <Button text="임시저장" color="black" />
+          </Section>
 
-      <SectionBox>
-        <TitleSectionBox>숙소의 기본 정보를 입력해주세요.</TitleSectionBox>
+          <SectionBox>
+            <TitleSectionBox>
+              고객에게 노출 될 숙소 이름을 설정해주세요
+            </TitleSectionBox>
+            <TitleContentBox>
+              <SubTitleInput subTitle="숙소명" />
+            </TitleContentBox>
+          </SectionBox>
 
-        <GridBox>
-          <SubTitleInput subTitle="상호명" placeholder="예) 산하정보기술" />
-          <SubTitleInput subTitle="사업자 등록번호" />
-          <SubTitleInput subTitle="통신 판매 신고 번호" />
+          <SectionBox>
+            <TitleSectionBox>숙소의 기본 정보를 입력해주세요.</TitleSectionBox>
 
-          <SubTitleInput subTitle="대표자명" placeholder="예) 홍길동" />
-          <SubTitleInput subTitle="대표 번호" />
-          <SubTitleInput subTitle="국가/지역" />
+            <GridBox>
+              <SubTitleInput subTitle="상호명" placeholder="예) 산하정보기술" />
+              <SubTitleInput subTitle="사업자 등록번호" />
+              <SubTitleInput subTitle="통신 판매 신고 번호" />
 
-          <SubTitleInput
-            subTitle="홈페이지 URL"
-            placeholder="예) www.naver.com"
-          />
-          <SubTitleInput subTitle="대표 이메일" />
-          <SubTitleInput subTitle="시/도" />
+              <SubTitleInput subTitle="대표자명" placeholder="예) 홍길동" />
+              <SubTitleInput subTitle="대표 번호" />
+              <SubTitleInput subTitle="국가/지역" />
 
-          <SubTitleInput subTitle="체크인 시간" />
-          <SubTitleInput subTitle="체크아웃 시간" />
-          <SubTitleInput subTitle="등급" />
-        </GridBox>
-      </SectionBox>
-      <div>
-        <Button backgroundColor="red" text="이전" />
-        <button>다음</button>
-      </div>
+              <SubTitleInput
+                subTitle="홈페이지 URL"
+                placeholder="예) www.naver.com"
+              />
+              <SubTitleInput subTitle="대표 이메일" />
+              <SubTitleInput subTitle="시/도" />
+
+              <SubTitleInput subTitle="체크인 시간" />
+              <SubTitleInput subTitle="체크아웃 시간" />
+              <SubTitleInput subTitle="등급" />
+            </GridBox>
+          </SectionBox>
+          <Section>
+            <Button backgroundColor="red" text="이전" />
+            <Button text="다음" />
+          </Section>
+        </Wrapper>
+      </FirstWrapper>
     </>
   );
 }
